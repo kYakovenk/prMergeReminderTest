@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '0 9 * * *'
+    - cron: '45 23 * * *'
 
 jobs:
   deploy:
