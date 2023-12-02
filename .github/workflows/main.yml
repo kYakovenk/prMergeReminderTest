@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '45 23 * * *'
+    - cron: '10 0 * * *'
 
 jobs:
   deploy:
@@ -15,4 +15,4 @@ jobs:
       with:
         token: "${{ secrets.GITHUB_TOKEN }}"
         reminder-comment: "Don't forget to review this PR !"
-        days-before-reminder: '1'
+        days-before-reminder: '0'
