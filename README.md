@@ -1,3 +1,3 @@
 # prMergeReminderTest
 
-A repo for testing github repo things
+A repo for testing github repo settings
