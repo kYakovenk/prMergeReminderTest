@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
 
       # -----------------------------------------------------------------------------------------------------------
-      # Example 4
+      # Make sure Doc 2 is updated in PR when Doc 1 is modified
       # -----------------------------------------------------------------------------------------------------------
       - name: Get all test, doc and src files that have changed
         id: changed-files-yaml
