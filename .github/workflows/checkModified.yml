@@ -16,19 +16,29 @@ jobs:
       - uses: actions/checkout@v4
 
       # -----------------------------------------------------------------------------------------------------------
-      # Example 1
+      # Example 4
       # -----------------------------------------------------------------------------------------------------------
-      - name: Get changed files
-        id: changed-files
+      - name: Get all test, doc and src files that have changed
+        id: changed-files-yaml
         uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46
-        # To compare changes between the current commit and the last pushed remote commit set `since_last_remote_commit: true`. e.g
-        # with:
-        #   since_last_remote_commit: true 
+        with:
+          files_yaml: |
+            doc1:
+              - 'README.md'
+            doc2:
+              - '.github/workflows/checkModified.yml'
+          # Optionally set `files_yaml_from_source_file` to read the YAML from a file. e.g `files_yaml_from_source_file: .github/changed-files.yml`
 
-      - name: List all changed files
+      - name: Run step if test file(s) change
+        # NOTE: Ensure all outputs are prefixed by the same key used above e.g. `test_(...)` | `doc_(...)` | `src_(...)` when trying to access the `any_changed` output.
+        if: steps.changed-files-yaml.outputs.doc1_any_changed == 'true'  
         env:
-          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+          DOC1_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.doc1_all_changed_files }}
+          DOC2_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.doc2_all_changed_files }}
         run: |
-          for file in ${ALL_CHANGED_FILES}; do
-            echo "$file was changed"
-          done
+          echo ""
+          echo "List all the files that have changed: $DOC1_ALL_CHANGED_FILES"
+          echo ""
+          echo "List all the files that have changed: $DOC2_ALL_CHANGED_FILES"
+          
+      
