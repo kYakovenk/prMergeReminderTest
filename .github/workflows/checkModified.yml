@@ -40,10 +40,10 @@ jobs:
           echo "List all the files that have changed: $DOC1_ALL_CHANGED_FILES"
           echo ""
           echo "List all the files that have changed: $DOC2_ALL_CHANGED_FILES"
-          if [ $DOC1_ALL_CHANGED_FILES == "" ]; then
+          if [ "$DOC1_ALL_CHANGED_FILES" == "" ]; then
             echo "README.md Not Modified"
           fi
-          if [ $DOC2_ALL_CHANGED_FILES == "" ]; then
+          if [ "$DOC2_ALL_CHANGED_FILES" == "" ]; then
             echo "checkModified.yml Not Modified"
           fi
           
