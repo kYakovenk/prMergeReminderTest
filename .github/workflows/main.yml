@@ -13,5 +13,5 @@ jobs:
     - uses: blombard/review-reminder@v0.7
       with:
         token: "${{ secrets.GITHUB_TOKEN }}"
-        reminder-comment: "Don't forget to review this PR !"
+        reminder-comment: "Don't forget to review this PR asap !"
         days-before-reminder: '0'
